@@ -23,6 +23,7 @@ import AdminSignin from './pages/AdminSignin';
 import AdminPage from './pages/AdminPage';
 import AdminDashboard from './pages/AdminDashboard';
 import AddProduct from './pages/AddProduct';
+import ProductDetails from './pages/ProductDetails';
 
 function App() {
   const dispatch = useDispatch();
@@ -52,6 +53,7 @@ function App() {
           <Route path='cart' element={<Cart/>} />
           <Route path='categories/:category' element={<Categories/>}/>
           <Route path='products/:product' element={<Products/>} />
+          <Route path='products/:category/:productID' element={<ProductDetails/>} />
           <Route path='profile' element={<Profile/>} />
         </Route>
 

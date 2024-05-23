@@ -5,7 +5,7 @@ import Category from '../components/Category';
 function Categories() {
 
   return (
-    <div>
+    <div className='category-page'>
         <Category/>
     </div>
   )

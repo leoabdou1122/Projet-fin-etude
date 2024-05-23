@@ -34,8 +34,27 @@ function Header() {
   return (
     
     <header>
+      <div className='mobile-view'>
       <div className='logo'>
-        <Link to='/'>Logo</Link>
+        <Link to='/'>
+          <img src='/images/logo.svg'/>
+        </Link>
+      </div>
+          <BsPersonCircle size={27}/>
+        <div className='user-cart' data-value={cart.length !==0 && cart.length}>
+          <Link to={isLogin ? '/cart' : '/signin'}>
+            <BsBag size={25}/>
+          </Link>
+        </div>
+        <div className='browser-mode' onClick={handelMode}>
+          <BsFillSunFill size={20} />
+        </div>
+      </div>
+      <div className='header-container'>
+      <div className='logo'>
+        <Link to='/'>
+          <img src='/images/logo.svg'/>
+        </Link>
       </div>
       <div className="search-input">
         <input type="text" name="" id="" placeholder='Enter your search terms'/>
@@ -55,18 +74,15 @@ function Header() {
         </div>
       </div>
       <div className='clb-icons'>
-        <div className='user-cart' data-value={cart.length}>
+        <div className='user-cart' data-value={cart.length !==0 && cart.length}>
           <Link to={isLogin ? '/cart' : '/signin'}>
           <BsBag size={25}/>
           </Link>
         </div>
-        <div className='langue'>
-          <BsGlobe2 size={20}/>
-          <span>English</span>
-        </div>
         <div className='browser-mode' onClick={handelMode}>
           <BsFillSunFill size={20} />
         </div>
+      </div>
       </div>
     </header>
   )

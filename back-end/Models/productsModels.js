@@ -29,7 +29,7 @@ async function getProductById(id) {
 // to get a products by category :
 async function getProductByCategory(category) {
     try {
-        const [row] = await pool.query('SELECT * FROM Products JOIN categories ON categories.CategoryID = Products.CategoryID WHERE categories.CategoryName = ?', [category])
+        const [row] = await pool.query('SELECT * FROM Products JOIN categories ON categories.CategoryID = Products.CategoryID WHERE categories.CategoryID = ? LIMIT 4', [category])
         return row
     } catch (error) {
         console.error('Failed to get Product by category')

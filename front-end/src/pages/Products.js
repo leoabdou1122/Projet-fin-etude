@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
@@ -12,6 +12,7 @@ function Products() {
   const {product} = useParams()
   const [allProduct, setAllProduct] = useState([])
   const [sort, setSort] = useState()
+  const navigate = useNavigate()
   useEffect(() => {
     axios.get(`http://localhost:3001/Products/groupe/${product}`)
     .then(res => setAllProduct(res.data))
@@ -29,6 +30,7 @@ function Products() {
       }
   }
 
+  console.log(allProduct)
   const sortProduct = (e) => {
     const value = e.target.value
 
@@ -41,8 +43,8 @@ function Products() {
     }
   }
   return (
-    <>
-    <div className='product-page'>
+    <div className='product-container-page'>
+      <div className='product-page'>
       
       <h2>{product} Products</h2>
       <div className='sort-product'>
@@ -55,7 +57,7 @@ function Products() {
       <div className='all-products'>
           {
             allProduct.map((v) => (
-              <div className='product-info' key={v.ProductID}>
+              <Link to={`/products/${v.CategoryID}/${v.ProductID}`} className='product-info' key={v.ProductID}>
                 <div className='product-img'>
                   <img src={v.ImageURL.replace(basePath, "")} alt='' />
                 </div>
@@ -72,12 +74,12 @@ function Products() {
                     : <Link to='/signin'><button>Add To Cart</button></Link>
                   }
                 </div>
-              </div>
+              </Link>
             ))
           }
       </div>
+      </div>  
     </div>
-    </>
   )
 }
 

@@ -96,7 +96,8 @@ function Cart() {
   
 
   return (
-    <div className='cart-page'>
+    <div className='cart-section-page'>
+      <div className='cart-page'>
       <div className='product-side'>
         <h3>Shopping Cart ({cart.length})</h3>
         <div className='products-in-cart'>
@@ -149,6 +150,7 @@ function Cart() {
             <button>Checkout</button>
         </div>
       </div>
+    </div>
     </div>
   )
 }
